@@ -1,0 +1,28 @@
+@import "bootstrap";
+
+
+h1, h2, h3, h4, h5, h6, .navbar {
+  margin: 0;
+}
+
+.feature {
+  padding-top: 5%;
+}
+
+.splash {
+  width: 100%;
+  padding-left: 5%;
+  padding-right: 5%;
+}
+
+body {
+  background: image_url('swirl_pattern.png');
+   font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
+}
+
+.feature h1 {
+  color: #40a4c4;
+  font-size: 70px;
+  font-family: 'Lilita One', cursive;
+  text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
+}
