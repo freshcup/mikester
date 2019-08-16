@@ -4,6 +4,10 @@ class RoutinesController < ApplicationController
       @routine = Routine.order("created_at").last
     end
 
+    def random
+      @routine = Routine.order("RANDOM()").first
+    end
+
     def new
       @routine = Routine.new
     end
@@ -13,7 +17,7 @@ class RoutinesController < ApplicationController
       if @routine.invalid?
         flash[:error] = '<strong>Could not save</strong> the data you entered is invalid.'
       end
-        redirect_to root_path
+        redirect_to :controller => 'routines', :action => 'index'
     end
 
     def routine_params
