@@ -1,0 +1,7 @@
+<h1>Enter the routine details</h1>
+<%= simple_form_for @routine do |f| %>
+  <%= f.input :title %>
+  <%= f.input :description %>
+  <br />
+  <%= f.submit 'Create', class: 'btn btn-danger' %>
+<% end %>

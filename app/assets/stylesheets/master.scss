@@ -1,5 +1,8 @@
 @import "bootstrap";
 
+.clear {
+  clear: both;
+}
 
 h1, h2, h3, h4, h5, h6, .navbar {
   margin: 0;
@@ -20,9 +23,11 @@ body {
    font-family: Constantia, "Lucida Bright", Lucidabright, "Lucida Serif", Lucida, "DejaVu Serif", "Bitstream Vera Serif", "Liberation Serif", Georgia, serif;
 }
 
-.feature h1 {
+
+.navbar-brand {
   color: #40a4c4;
-  font-size: 70px;
+  font-size: 40px;
   font-family: 'Shadows Into Light', cursive;
   text-shadow: rgba(0, 0, 0, 0.95) 1px 1px;
 }
+

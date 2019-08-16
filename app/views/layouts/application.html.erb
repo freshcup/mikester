@@ -11,41 +11,76 @@
   </head>
 
   <body>
-    <nav class="navbar navbar-toggleable-md navbar-inverse bg-inverse">
-  <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-  <%= link_to 'Nomster', root_path, class: 'navbar-brand' %>
+   
+   <nav class="navbar navbar-toggleable-md bg-inverse">
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+          <%= link_to 'Mikester', root_path, class: 'navbar-brand' %>
+        
 
-  <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-    <ul class="navbar-nav mr-auto mt-2 mt-md-0">
-      <li class="nav-item">
-              </li>
-    </ul>
-    <ul class="navbar-nav">
-  <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
-    </li>
-  <% else %>
-    <li class="nav-item">
-      <%= link_to 'Sign in', new_user_session_path, class: 'nav-link' %>
-    </li>
-    <li class="nav-item">
-      <%= link_to 'Sign up', new_user_registration_path, class: 'nav-link' %>
-    </li>
-  <% end %>
-</ul>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav mr-auto mt-2 mt-md-0">
+            <% if user_signed_in? %>
+            <li class="nav-item">
+                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal">
+                 New Routine
+              </button>
+            </li>
+             </ul>
+           <ul class="navbar-nav">
+        
+            <li class="nav-item">
+                <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
+            </li>
+        <% else %>
+            <li class="nav-item">
+                <%= link_to 'Sign In', new_user_session_path, class: 'nav-link' %>
+            </li>
+            <li class="nav-item">
+                <%= link_to 'Sign Up', new_user_registration_path, class: 'nav-link' %>
+            </li>
+        <% end %>
+            </ul>
+        </div>
+      </nav>
+
+ 
+
+    
+
+
+  <div class="container">
+    <% if flash[:error].present? %>
+      <div class="col-10 offset-1 alert alert-danger">
+        <%= flash[:error].html_safe %>
+      </div>
+    <% end %>
+    <%= yield %>
   </div>
-</nav>
 
-    <% if notice.present? %>
-      <p class="alert alert-info"><%= notice %></p>
-    <% end %>
-    <% if alert.present? %>
-      <p class="alert alert-danger"><%= alert %></p>
-    <% end %>
+<!-- Modal -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">×</span>
+            </button>
+            <h4 class="modal-title" id="myModalLabel">New routine</h4>
+          </div>
+           <div class="modal-body">
 
-<%= yield %>
+            <%= simple_form_for Routine.new do |f| %>
+              <%= f.input :title, label: "Title of routine" %>
+              <%= f.input :description, label: "Description of routine" %>
+              <br />
+              <%= f.submit 'Create', class: 'btn btn-primary' %>
+            <% end %>
+         
+        </div>
+      </div>
+    </div>
   </body>
 </html>
+
