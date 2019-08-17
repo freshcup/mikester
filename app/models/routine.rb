@@ -1,7 +1,7 @@
 class Routine < ApplicationRecord
 
-  belongs_to :user
   
-  validates :title, presence: true, length: { maximum: 90, minimum: 4 }
-  validates :description, presence: true, length: { maximum: 90, minimum: 4 }
+
+  validates :title, presence: true, length: { maximum: 140, minimum: 3 }
+  validates :description, presence: true, length: { maximum: 140, minimum: 3 }
 end
